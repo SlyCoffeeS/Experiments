@@ -1,3 +1,0 @@
-import math
-
-perimiter = input('Whats the length and width of the rectangle?')
