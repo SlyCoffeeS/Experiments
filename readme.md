@@ -3,9 +3,9 @@
 **Krevor Raudsepp**
 
 ## module 1/2
-   complete s
+   complete
 ## module 3
- incomplete
+   Comple 6 exercises
 ## module 4
 
 ## module 5
