@@ -1,18 +1,18 @@
 
 
-cabin_class = input("Input cabin class").lower()
+cabin_class = input("Enter the cabin class (LUX, A, B, or C): ")
 
 cabin_class = str(cabin_class)
 
 
     
-if cabin_class == "lux":
-        print("LUX: upper-deck cabin with a balcony")
-elif cabin_class == "a":
-        print("A: above the car deck, equipped with a window")
-elif cabin_class == "b":
-        print("B: windowless cabin above the car deck")
-elif cabin_class == "c":
-        print("C: windowless cabin below the car deck")
+if cabin_class == "LUX":
+        print("Upper-deck cabin with a balcony.")
+elif cabin_class == "A":
+        print("Above the car deck, equipped with a window.")
+elif cabin_class == "B":
+        print("Windowless cabin above the car deck.")
+elif cabin_class == "C":
+        print("Windowless cabin below the car deck.")
 else:
         print("Invalid cabin class.")

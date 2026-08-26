@@ -1,21 +1,25 @@
-Gender = str(input("whats your gender ")).lower()
+Gender = str(input("Enter biological gender (male/female): ")).lower()
 
 
 if Gender == "male":
-    hemoglobin_value = float(input("Enter hemogloblin value "))
+    hemoglobin_value = float(input("Enter hemoglobin value (g/l): "))
     if hemoglobin_value < 134:
-        print("hemogloblin value is low")
+        print("Your hemoglobin is low. ")
     elif hemoglobin_value > 167:
-        print("Hemogloblin value is High")
+        print("Your hemoglobin is high. ")
     elif hemoglobin_value >= 134 and hemoglobin_value <= 167 :
-        print("Hemogloblin value is normal")
+        print("Your hemoglobin is normal. ")
 
-if Gender == "female":
-    hemoglobin_valuefemale = float(input("Enter hemogloblin value "))
+elif Gender == "female":
+    hemoglobin_valuefemale = float(input("Enter hemoglobin value (g/l): "))
     if hemoglobin_valuefemale < 117:
-        print("Hemogloblin value is low")
+        print("Your hemoglobin is low. ")
     elif hemoglobin_valuefemale >= 117 and hemoglobin_valuefemale <= 155 :
-        print("Hemogloblin value is normal")
+        print("Your hemoglobin is normal. ")
     elif hemoglobin_valuefemale > 155:
-        print("Hemogloblin value is high")
+        print("Your hemoglobin is high. ")
+
+else:
+    value = input("Enter hemoglobin value (g/l): ")
+    print("Invalid gender. ")
     

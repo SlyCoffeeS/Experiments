@@ -1,10 +1,11 @@
+fish_size = input("Enter the length of the zander in centimeters: ")
 
-fish_size = input('Whats the length of the zander?')
-
-fish_size = int(fish_size)
+fish_size = float(fish_size)
 
 if fish_size >= 42:
-    print("Keep the fish")
+    print("The zander meets the size limit. ")
 
-if fish_size <= 41:
-    print(f"the fish is {42 - fish_size} cm too small")
+if fish_size < 42:
+    print ("The zander does not meet the size limit. ")
+    print ("Please release the fish back into the lake. ")
+    print(f"The fish was {42 - fish_size:.1f} centimeters below the size limit. ")

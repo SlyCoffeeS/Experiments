@@ -5,9 +5,9 @@
 ## module 1/2
    complete
 ## module 3
-   Comple 6 exercises
+   Comple 6/6
 ## module 4
-
+   Complete 4/4
 ## module 5
 
 ## module 6
