@@ -9,9 +9,9 @@
 ## module 4
    Complete 4/4
 ## module 5
-
+   complete 6/6
 ## module 6
-
+   complete 4/4
 ## module 7
 
 ## module 8
