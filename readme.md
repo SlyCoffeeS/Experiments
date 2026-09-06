@@ -13,7 +13,7 @@
 ## module 6
    complete 4/4
 ## module 7
-
+   complete 6/6
 ## module 8
 
 ## module 9
