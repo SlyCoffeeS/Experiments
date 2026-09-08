@@ -4,7 +4,7 @@ number = input("Enter a number: ")
 numbers = []
 
 while number != "":
-    numbers.append(int(number))
+    numbers.append(float(number))
     number = input("Enter a number: ")
 
 numbers.sort(reverse=True)

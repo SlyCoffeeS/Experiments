@@ -1,4 +1,4 @@
-number= input("Enter numbers: ")
+number= input("Enter a number (or press Enter to quit): ")
 
 if number != "":
     number=float(number)
@@ -13,9 +13,7 @@ while number != "":
 
     elif largest < number:
         largest = number
-    number= input("Enter a number")
+    number= input("Enter a number (or press Enter to quit): ")
 
-print(f"smallest is  {smallest} and the largest is {largest}")
-
-
-
+print(f"Smallest number {smallest}")
+print(f" Largest number {largest}")
