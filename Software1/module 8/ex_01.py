@@ -1,21 +1,27 @@
 def get_season(month):
 
-    Winter = ("December", "january", "February")
-    Spring = ("March", "April", "May")
-    Summer = ("June", "July", "August")
-    Autumn = ("September", "October", "November")
+    winter = ("December", "january", "February")
+    spring = ("March", "April", "May")
+    summer = ("June", "July", "August")
+    autumn = ("September", "October", "November")
 
     if month in (12, 1, 2):
-        return "Winter"
+        return "winter"
     elif month in (3, 4, 5):
-        return "Spring"
+        return "spring"
     elif month in (6, 7, 8):
-        return "Summer"
+        return "summer"
     elif month in (9, 10, 11):
-        return "Autumn"
+        return "autumn"
     else:
-        return "Invalid month"
+        return "Please enter a number between 1 and 12."
 
     
-month = int(input("Enter the number of a month (1-12):"))
-print("You entered: {month} The season is {get_season(month)}")
+month = int(input("Enter the number of a month (1-12): "))
+
+if month >= 1 and month <= 12:
+    print(f"You entered: {month}")
+    print(f"The season is {get_season(month)}.")
+else:
+    print(f"You entered: {month}")
+    print(get_season(month))
