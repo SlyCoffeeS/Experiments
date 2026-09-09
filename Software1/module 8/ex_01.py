@@ -17,5 +17,5 @@ def get_season(month):
         return "Invalid month"
 
     
-month = int(input("Enter number of a month"))
-print(get_season(month))
+month = int(input("Enter the number of a month (1-12):"))
+print("You entered: {month} The season is {get_season(month)}")
