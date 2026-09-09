@@ -1,9 +1,9 @@
 def get_season(month):
 
-    winter = ("December", "january", "February")
-    spring = ("March", "April", "May")
-    summer = ("June", "July", "August")
-    autumn = ("September", "October", "November")
+   ## winter = ("December", "january", "February")
+   ## spring = ("March", "April", "May")
+   ## summer = ("June", "July", "August")
+   ## autumn = ("September", "October", "November")
 
     if month in (12, 1, 2):
         return "winter"
