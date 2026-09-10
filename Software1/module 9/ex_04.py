@@ -18,19 +18,18 @@ class Car:
         self.travelled_distance += self.current_speed * hours
 
 def race(cars):
-    cars.clear()            ## didnt know how to fix my code without this :( kept returning 20, and if changed then moddle complained.
-    for i in range(10):
-        car = Car(f"ABC-{i+1}", random.randint(100,200))
-        cars.append(car)
+    while all(car.travelled_distance <= 10000 for car in cars):
+        for car in cars:
+            car.accelerate(random.randint(-10, 15))
+            car.drive(1)
     return cars
 
 cars = []
+
+for i in range(10):
+        car = Car(f"ABC-{i+1}", random.randint(100,200))
+        cars.append(car)
 cars = race(cars)
 
-while all(car.travelled_distance <= 10000 for car in cars):
-    for car in cars:
-        car.accelerate(random.randint(-10, 15))
-        car.drive(1)
-        
 for car in cars:
     print(f"The car {car.license_plate} speed is {car.current_speed} and has driven this distance: {car.travelled_distance}")
