@@ -1,36 +1,35 @@
 class Elevator:
     def __init__(self, bottom, top):
-        self.bottom_floor
-        self.top_floor
-        self.current_floor = 0
+        self.bottom_floor = bottom
+        self.top_floor = top
+        self.current_floor = bottom
 
     def go_to_floor(self, floor):
-        while self.bottom_floor != self.go_to_floor:
-            if self.go_to_floor > self.bottom_floor:
-                for f in floor:
-                    self.floor_up
-                    print(self.bottom_floor)
-                    return
-                
-            elif self.go_to_floor < self.bottom_floor:
-                for f in floor:
-                    self.floor_down
-                    print(self.bottom_floor)
-                    return
-        
+        if floor < self.bottom_floor or floor > self.top_floor:
+            print ("Invali floor")
+            return
+
+        while self.current_floor < floor:
+            self.floor_up()
+
+        while self.current_floor > floor:
+            self.floor_down()
+    
     def floor_up(self):
-        if self.current_floor < self.top_floor or != self.go_to_floor:
-            self.current_floor + 1
-            print(self.bottom_floor)
+        if self.current_floor < self.top_floor:
+            self.current_floor += 1
+        print(self.current_floor)
 
     def floor_down(self):
-        if self.bottom_floor != 0:
-            self.bottom_floor - 1
-            print(self.bottom_floor)
+        if self.current_floor > self.bottom_floor:
+            self.current_floor -= 1
+        print(self.current_floor)
 
                 
-    H = Elevator(0, 5)
-
+# h = Elevator(1, 10)
+# print("Basic elevator test:")
+# h.go_to_floor(5)
+# h.go_to_floor(1)
 
 
 
