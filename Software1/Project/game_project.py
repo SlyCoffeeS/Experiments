@@ -6,25 +6,25 @@ def add_item():
     what = input("What would you like to add to the inventory?")
 
     inventory.append(what)
-    print(f"{what} has been added to inventory")
+    print(f"\n{what} has been added to inventory")
     
 def open_inventory():
 
-    print("Inventory contains")
+    print("\nInventory contains")
 
     for item in inventory:
         print("- " + item)
 
 def drop_item():
-    drop = input("What item would you like to drop?")
+    drop = input("\nWhat item would you like to drop?")
 
     if drop in inventory:
 
         inventory.remove(drop)
-        print(f"{drop} has been dropped on the floor.")
+        print(f"\n{drop} has been dropped on the floor.")
 
     else:
-        print("cant drop something thats not there!")
+        print("\ncant drop something thats not there!")
 
 
 
@@ -51,10 +51,10 @@ def main_menu():
             print("catch ya later")
             break
         elif command == "5":
-            print(f"Tere!, kuidas laheb?")
+            print(f"\nTere!, kuidas laheb?")
         
         elif command == "6":
-            print("1, 2, 3, 4, 5, 6, 7, 8, 9, 10")
+            print("\n1, 2, 3, 4, 5, 6, 7, 8, 9, 10")
 
 name=input("Insert your name: ")
 age=int(input("insert your age: "))
