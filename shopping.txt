@@ -1,0 +1,5 @@
+milk
+jam
+bread
+juice
+coke
