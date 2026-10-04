@@ -1,7 +1,11 @@
 import json
+import os
 from game.entities.item import Item
 from game.world.room import Room
 from game.entities.player import Player
+
+base_dir = os.path.dirname(__file__)
+
 
 sword = Item("Sword", 1.5)
 shield = Item("Shield", 4)
@@ -27,7 +31,44 @@ dungeon4.add_exit("down", dungeon3)
 
 #     inventory.append(what)
 #     print(f"\n{what} has been added to inventory\n")
-    
+
+def game_save(player):
+    save_data = {
+    "name": player.name,
+    "room": player.location.name,
+    "inventory": [Item.name for item in player.items]
+    }
+    with open("save.json", "w", encoding="utf-8") as file:
+        json.dump(save_data, file)
+        print("\nGame saved!\n")
+def load_game():
+    try:
+        with open("save.json", "r", encoding="utf-8") as file:
+            data = json.load(file)
+        room_map = {
+            "Floor 1": dungeon1,
+            "Floor 2": dungeon2,
+            "Floor 3": dungeon3,
+            "Floor 4": dungeon4,
+        }
+        starting_room = room_map.get(data["room"], dungeon1)
+
+        loaded_player = player(data["name"], items=[], location = starting_room)
+
+        item_map = {
+            "Sword": sword,
+            "Shield": shield,
+            "Carrot seeds": carrot_seed,
+            "Leather cap": leather_cap
+        }
+        for item_name in data ["inventory"]:
+            if item_name in item_map:
+                loaded_player.items.append(item_map[item_name])
+        print(f"\nWelcome back, {loaded_player.name}!")
+        return loaded_player
+    except FileNotFoundError:
+        return None
+
 def open_inventory(player):
 
     print("\nInventory contains")
@@ -111,24 +152,34 @@ def main_menu(player):
                 print("\nBad choice")
 
         elif command == "4":
-             with open("instructions.txt", "r") as file:
-                  instructions_txt = file.read()
-                  print(instructions_txt)
+             read_file_safe("instructions.txt")
         
         elif command == "5":
                     print("\ncatch ya later\n")
                     break
 
 
-try:
-    with open("intro.txt", "r", encoding="utf-8") as file:
-        intro_text = file.read()
-        print(intro_text)
-except FileNotFoundError:
-     print("File not found.")
-except IOError:
-     print("Error occured while handling the file.")
+player = None
 
+if os.path.exists("save.json"):
+    choice = input("Saved game found! Continue?").lower()
+    if choice == "yes":
+        player = load_game()
+
+if player is None:
+
+    def read_file_safe(filename):
+        filepath = os.path.join(base_dir, filename)
+        try:
+            with open(filepath, "r", encoding="utf-8") as file:
+                intro_text = file.read()
+            print(intro_text)
+        except FileNotFoundError:
+            print("File not found.")
+        except IOError:
+            print("Error occured while handling the file.")
+
+read_file_safe("intro.txt")
 
 name=input("Insert your name: ")
 age=int(input("insert your age: "))
@@ -141,3 +192,5 @@ if age >= 12:
     main_menu(player)
 else:
     print ("user is a minor, Come back when older")
+
+    player = Player(name, items=[], location=dungeon1)
