@@ -32,14 +32,27 @@ dungeon4.add_exit("down", dungeon3)
 #     inventory.append(what)
 #     print(f"\n{what} has been added to inventory\n")
 
+def read_file_safe(filename):
+        filepath = os.path.join(base_dir, filename)
+        try:
+            with open(filepath, "r", encoding="utf-8") as file:
+                intro_text = file.read()
+            print(intro_text)
+        except FileNotFoundError:
+            print("File not found.")
+        except IOError:
+            print("Error occured while handling the file.")
+
 def game_save(player):
+    save_path = os.path.join(base_dir, "save.json")
     save_data = {
     "name": player.name,
     "room": player.location.name,
     "inventory": [item.name for item in player.items]
     }
-    with open("save.json", "w", encoding="utf-8") as file:
+    with open(save_path, "w", encoding="utf-8") as file:
         json.dump(save_data, file)
+        
         print("\nGame saved!\n")
 def load_game():
     save_path = os.path.join(base_dir, "save.json")
@@ -172,30 +185,16 @@ if os.path.exists(save_path):
         player = load_game()
 
 if player is None:
+    read_file_safe("intro.txt")
+    name=input("Insert your name: ")
+    try:
+        age = int(input("Insert your age: "))
+    except ValueError:
+        age = 0
+    if age >= 12:
+        print(f"Welcome {name}!")
+        player = Player(name, items=[], location=dungeon1,)
+    else:
+        print ("user is a minor, Come back when older")
 
-    def read_file_safe(filename):
-        filepath = os.path.join(base_dir, filename)
-        try:
-            with open(filepath, "r", encoding="utf-8") as file:
-                intro_text = file.read()
-            print(intro_text)
-        except FileNotFoundError:
-            print("File not found.")
-        except IOError:
-            print("Error occured while handling the file.")
-
-read_file_safe("intro.txt")
-
-name=input("Insert your name: ")
-age=int(input("insert your age: "))
-print(name)
-print(age)
-
-if age >= 12:
-    print(f"Welcome {name}!")
-    player = Player(name, items=[], location=dungeon1,)
-    main_menu(player)
-else:
-    print ("user is a minor, Come back when older")
-
-    player = Player(name, items=[], location=dungeon1)
+main_menu(player)

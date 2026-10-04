@@ -20,3 +20,5 @@ currently you cant add random items yourself anymore (the function needed in ass
 Will see what needs to be done in project assignemt 5, and then i might move everything around more and add items/ additional rooms. 
 
 ## i spent way too much time on this today, and might have made it more complicated than the assignment asked for :/
+
+for project assignement 5. i added so theres a brief intro message, and you can now open instructions and save a game in the main menu. if u exit and then start the game again you get a prompt that shows that save found and you can continue with your progress. # there is still bugs, but that i will fix later for final submission of project.
