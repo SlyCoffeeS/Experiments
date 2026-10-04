@@ -1,3 +1,4 @@
+import json
 from game.entities.item import Item
 from game.world.room import Room
 from game.entities.player import Player
@@ -21,11 +22,11 @@ dungeon3.add_exit("down", dungeon2)
 dungeon3.add_exit("up", dungeon4)
 dungeon4.add_exit("down", dungeon3)
 
-def add_item():
-    what = input("What would you like to add to the inventory?")
+# def add_item():
+#     what = input("What would you like to add to the inventory?")
 
-    inventory.append(what)
-    print(f"\n{what} has been added to inventory\n")
+#     inventory.append(what)
+#     print(f"\n{what} has been added to inventory\n")
     
 def open_inventory(player):
 
@@ -39,15 +40,15 @@ def open_inventory(player):
         print("\nNo items in inventory!\n")
 
 def drop_item(player):
-   drop_name = input("\n what would you like to drop")
-   for item in player.items:
-       if item.name == drop_name:
+    drop_name = input("\n what would you like to drop")
+    for item in player.items:
+       if item.name.lower() == drop_name.lower():
            player.items.remove(item)
            player.location.item = item
            print(f"\n You have tossed {item.name} in the corner at {player.location.name}\n")
            return
-       else:
-           print("\nNo such item in inventory\n")
+    else:
+        print("\nNo such item in inventory\n")
     
            
 
@@ -57,8 +58,8 @@ def exploration_menu(player):
         print("1. Move (up / down)")
         print("2. Look around")
         print("3. Take item in room")
-        print("4. Return to Main menu")
-        print("5. Toss item in a corner")
+        print("4. Toss item in a corner")
+        print("5. Return to Main menu")
         
 
         choice = input("Choose an action: ")
@@ -74,10 +75,11 @@ def exploration_menu(player):
             player.collect_item()
                                 
         elif choice == "4":
-            print("\nReturning to Main menu\n")
-            break
-        elif choice == "5":
             drop_item(player)
+
+        elif choice == "5":
+                    print("\nReturning to Main menu\n")
+                    break
 
 def main_menu(player):
     while True:
@@ -85,7 +87,8 @@ def main_menu(player):
         print("1. Explore")
         print("2. Open inventory")
         print("3. Random options (Greet/count)")
-        print("4. Lopeta")
+        print("4. Read instructions")
+        print("5. Lopeta")
 
         command = input("\nWhat would you like to do?\n")
 
@@ -106,10 +109,26 @@ def main_menu(player):
                 print("\n1, 2, 3, 4, 5, 6, 7, 8, 9, 10")
             else:
                 print("\nBad choice")
-        
+
         elif command == "4":
+             with open("instructions.txt", "r") as file:
+                  instructions_txt = file.read()
+                  print(instructions_txt)
+        
+        elif command == "5":
                     print("\ncatch ya later\n")
                     break
+
+
+try:
+    with open("intro.txt", "r", encoding="utf-8") as file:
+        intro_text = file.read()
+        print(intro_text)
+except FileNotFoundError:
+     print("File not found.")
+except IOError:
+     print("Error occured while handling the file.")
+
 
 name=input("Insert your name: ")
 age=int(input("insert your age: "))
