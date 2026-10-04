@@ -36,14 +36,15 @@ def game_save(player):
     save_data = {
     "name": player.name,
     "room": player.location.name,
-    "inventory": [Item.name for item in player.items]
+    "inventory": [item.name for item in player.items]
     }
     with open("save.json", "w", encoding="utf-8") as file:
         json.dump(save_data, file)
         print("\nGame saved!\n")
 def load_game():
+    save_path = os.path.join(base_dir, "save.json")
     try:
-        with open("save.json", "r", encoding="utf-8") as file:
+        with open(save_path, "r", encoding="utf-8") as file:
             data = json.load(file)
         room_map = {
             "Floor 1": dungeon1,
@@ -53,7 +54,7 @@ def load_game():
         }
         starting_room = room_map.get(data["room"], dungeon1)
 
-        loaded_player = player(data["name"], items=[], location = starting_room)
+        loaded_player = Player(data["name"], items=[], location = starting_room)
 
         item_map = {
             "Sword": sword,
@@ -129,7 +130,8 @@ def main_menu(player):
         print("2. Open inventory")
         print("3. Random options (Greet/count)")
         print("4. Read instructions")
-        print("5. Lopeta")
+        print("5. Save game")
+        print("6. Lopeta")
 
         command = input("\nWhat would you like to do?\n")
 
@@ -153,17 +155,20 @@ def main_menu(player):
 
         elif command == "4":
              read_file_safe("instructions.txt")
-        
+
         elif command == "5":
+            game_save(player)
+        
+        elif command == "6":
                     print("\ncatch ya later\n")
                     break
 
 
 player = None
-
-if os.path.exists("save.json"):
+save_path = os.path.join(base_dir, "save.json")
+if os.path.exists(save_path):
     choice = input("Saved game found! Continue?").lower()
-    if choice == "yes":
+    if choice in ["y", "yes"]:
         player = load_game()
 
 if player is None:
