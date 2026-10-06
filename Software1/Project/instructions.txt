@@ -4,3 +4,4 @@ Navigate menus by typing in the numbers displayed on the different options.
 explore by writing 1 and then typing in (up) or (down), you can look around the rooms and then choose to either pick up the item or toss an item on the floor.
 there are few random options that you can do in main menu
 Close the game by choosing the last option.
+you can start the game by running the main program in VS code.
