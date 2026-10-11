@@ -3,39 +3,75 @@ import os
 from game.entities.item import Item
 from game.world.room import Room
 from game.entities.player import Player
+from game.entities.enemy import Slime
 
 base_dir = os.path.dirname(__file__)
 
+## creating items and rooms and enemies
 
+#items
 sword = Item("Sword", 1.5)
 shield = Item("Shield", 4)
-carrot_seed = Item("Carrot seeds", 0.2)
-leather_cap = Item("Leather cap", 0.4)
+slime_gel = Item("Slime gel", 0.1)
+gold_pouch = Item("Gold pouch", 1)
+bronze_key = Item("Bronze Key", 0.2)
 
-dungeon1 = Room("Floor 1", item=sword)
-dungeon2 = Room("Floor 2", item=carrot_seed)
-dungeon3 = Room("Floor 3", item=shield)
-dungeon4 = Room("Floor 4", item=leather_cap)
+#enemies
+blue_slime = Slime("Blue Slime", hp=20, drop_item=slime_gel)
+king_slime = Slime("Boss fight: King Slime", hp=45, drop_item=bronze_key)
 
-dungeon1.add_exit("up", dungeon2)
-dungeon2.add_exit("down", dungeon1)
+## rooms
+dungeon1 = Room("Floor 1", item=gold_pouch)
+dungeon2_west = Room("Floor 2 - Slime Cave", enemy=blue_slime, item=gold_pouch)
+dungeon2_east = Room("Floor 2 - Armory", item=sword)
+dungeon2_main = Room("Floor 2 - Main hall", item=gold_pouch)
+dungeon3 = Room("Floor 3 - Slime Nest", enemy=king_slime, item=gold_pouch)
+dungeon4 = Room("Floor 4 - Dungeon Exit", item=None)
+# Connecting rooms
+dungeon1.add_exit("left", dungeon2_west)
+dungeon2_west.add_exit("back", dungeon1)
 
-dungeon2.add_exit("up", dungeon3)
-dungeon3.add_exit("down", dungeon2)
+dungeon1.add_exit("right", dungeon2_east)
+dungeon2_east.add_exit("back", dungeon1)
+
+dungeon1.add_exit("up", dungeon2_main)
+dungeon2_main.add_exit("down", dungeon1)
+
+dungeon2_main.add_exit("up", dungeon3)
+dungeon3.add_exit("down", dungeon2_main)
 
 dungeon3.add_exit("up", dungeon4)
 dungeon4.add_exit("down", dungeon3)
 
-# def add_item():
-#     what = input("What would you like to add to the inventory?")
+## my simple battle function
+def battle_slime(player):
+    room = player.location
+    enemy = room.enemy
 
-#     inventory.append(what)
-#     print(f"\n{what} has been added to inventory\n")
+    if enemy == None: ## checking for enemies
+        print("\nNo enemies nearby!\n")
+        return
 
-def read_file_safe(filename):
+    has_sword = any(item.name.lower() == "sword" for item in player.items) ## adding a use for the sword
+    if has_sword:
+        damage = 10
+    else:  # or if u dont have a sword
+        damage = 5
+
+    enemy.hp -= damage
+    print(f"\n You hit the {enemy.name} for {damage}! (Remaining Hp: {max(0,enemy.hp)})")
+
+    if enemy.hp <= 0:
+        print(f"{enemy.name} has been defeated!")
+        if enemy.drop_item:
+            room.item = enemy.drop_item
+            print(f"{enemy.name} dropped a {enemy.drop_item.name} on the floor!")
+        room.enemy = None
+
+def read_file_safe(filename): # helper function for opening/ Reading text files and error handling when necessary
         filepath = os.path.join(base_dir, filename)
         try:
-            with open(filepath, "r", encoding="utf-8") as file:
+            with open(filepath, "r") as file:
                 intro_text = file.read()
             print(intro_text)
         except FileNotFoundError:
@@ -43,47 +79,52 @@ def read_file_safe(filename):
         except IOError:
             print("Error occured while handling the file.")
 
-def game_save(player):
+def game_save(player): # saving game and what to save
     save_path = os.path.join(base_dir, "save.json")
     save_data = {
     "name": player.name,
     "room": player.location.name,
     "inventory": [item.name for item in player.items]
     }
-    with open(save_path, "w", encoding="utf-8") as file:
-        json.dump(save_data, file)
+    with open(save_path, "w") as file:
+        json.dump(save_data, file) # converts into json and writes to file
         
         print("\nGame saved!\n")
-def load_game():
+def load_game(): ## loading and what to load
     save_path = os.path.join(base_dir, "save.json")
     try:
-        with open(save_path, "r", encoding="utf-8") as file:
+        with open(save_path, "r") as file:
             data = json.load(file)
         room_map = {
             "Floor 1": dungeon1,
-            "Floor 2": dungeon2,
-            "Floor 3": dungeon3,
-            "Floor 4": dungeon4,
+            "Floor 2 - Slime Cave": dungeon2_west,
+            "Floor 2 - Armory": dungeon2_east,
+            "Floor 2 - Main Hall": dungeon2_main,
+            "Floor 3 - Slime Nest": dungeon3,
+            "Floor 4 - Dungeon Exit": dungeon4,
         }
         starting_room = room_map.get(data["room"], dungeon1)
 
         loaded_player = Player(data["name"], items=[], location = starting_room)
 
-        item_map = {
+        item_map =  {
+
             "Sword": sword,
             "Shield": shield,
-            "Carrot seeds": carrot_seed,
-            "Leather cap": leather_cap
-        }
+            "Slime gel": slime_gel,
+            "Gold pouch": gold_pouch,
+            "Bronze Key": bronze_key
+
+            }
         for item_name in data ["inventory"]:
             if item_name in item_map:
                 loaded_player.items.append(item_map[item_name])
         print(f"\nWelcome back, {loaded_player.name}!")
         return loaded_player
-    except FileNotFoundError:
+    except FileNotFoundError: ## if no save file
         return None
 
-def open_inventory(player):
+def open_inventory(player): # checking inventory 
 
     print("\nInventory contains")
 
@@ -94,9 +135,9 @@ def open_inventory(player):
     else:
         print("\nNo items in inventory!\n")
 
-def drop_item(player):
+def drop_item(player): # dropping itemes
     drop_name = input("\n what would you like to drop")
-    for item in player.items:
+    for item in player.items: # looking thorugh inventory
        if item.name.lower() == drop_name.lower():
            player.items.remove(item)
            player.location.item = item
@@ -108,35 +149,46 @@ def drop_item(player):
            
 
 
-def exploration_menu(player):
+def exploration_menu(player): # sub menu
     while True:
         print("1. Move (up / down)")
         print("2. Look around")
         print("3. Take item in room")
-        print("4. Toss item in a corner")
-        print("5. Return to Main menu")
+        print("4. Slay the slime")
+        print("5. Toss item in a corner")
+        print("6. Return to Main menu")
         
 
         choice = input("Choose an action: ")
 
         if choice == "1":
-            direction = input("\nwhere do you wanna go? (up/down)\n")
+            direction = input("\nwhere do you wanna go? (up/down/left/right/back)\n").lower()
+            if direction == "up" and player.location.name == "Floor 3 - Slime Nest": # cant Win, without putting in the work yk. Checks if you have defated the boss before trying to leave.
+                if player.location.enemy != None:
+                    print("\n The King Slime blocks the way out, Defeat it to escape!\n")
+                    continue
             player.move(direction)
+            if player.location.name == "Floor 4 - Dungeon Exit": # Win condition to beat the game.
+                print("\n Congratulations! You have reached the end!\n")
+                break
 
         elif choice == "2":
             print(player.location.get_description())
 
         elif choice == "3":
             player.collect_item()
-                                
+
         elif choice == "4":
-            drop_item(player)
+            battle_slime(player)               
 
         elif choice == "5":
+            drop_item(player)
+
+        elif choice == "6":
                     print("\nReturning to Main menu\n")
                     break
 
-def main_menu(player):
+def main_menu(player): # as it says. Main menu
     while True:
         print("\n Main menu ")
         print("1. Explore")
@@ -177,11 +229,11 @@ def main_menu(player):
                     break
 
 
-player = None
+player = None # meaning no player created or loaded
 save_path = os.path.join(base_dir, "save.json")
 if os.path.exists(save_path):
-    choice = input("Saved game found! Continue?").lower()
-    if choice in ["y", "yes"]:
+    choice = input("Saved game found! (yes) to continue. press enter to skip.)").lower() # up to you if u wanna continue
+    if choice in ["yes"]:
         player = load_game()
 
 if player is None:
@@ -191,10 +243,11 @@ if player is None:
         age = int(input("Insert your age: "))
     except ValueError:
         age = 0
-    if age >= 12:
+    if age >= 12: # age checking if you are old enough to fight the war.
         print(f"Welcome {name}!")
         player = Player(name, items=[], location=dungeon1,)
     else:
         print ("user is a minor, Come back when older")
+        exit()
 
 main_menu(player)

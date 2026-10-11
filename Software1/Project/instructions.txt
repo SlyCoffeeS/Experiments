@@ -1,7 +1,11 @@
 /---Instructions---\
 
-Navigate menus by typing in the numbers displayed on the different options.
-explore by writing 1 and then typing in (up) or (down), you can look around the rooms and then choose to either pick up the item or toss an item on the floor.
-there are few random options that you can do in main menu
-Close the game by choosing the last option.
-you can start the game by running the main program in VS code.
+1. Type the number of the option you want to choose.
+2. choose exploration if u wanna get started with the game.
+3. moving is done by typing (up, down, left, right, or back).
+4. Remember to pick up items when entering rooms or defeating slimes. also you can look around to see what is in each room/floor.
+5. If you do not have a sword, you will do 5 damage as default. if you pick up a sword you will do 10.
+6. You can toss items, but i dont think theres any point in that unless you just dislike items.
+7. Remember to save the game if u wanna continue the game later. (Recommended it if you are too busy to finnish a game that takes 2 minutes)
+
+** overall your mission is to explore, collect items and slay the slimes to escape the dungeon.

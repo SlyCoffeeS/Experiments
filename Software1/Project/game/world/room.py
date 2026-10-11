@@ -1,7 +1,8 @@
 class Room:
-    def __init__(self, name: str, item):
+    def __init__(self, name: str, item, enemy=None):
         self.name = name
         self.item = item
+        self.enemy = enemy
         self.exits = {}
 
     def add_exit(self, direction: str , destination_room):
@@ -21,4 +22,5 @@ class Room:
 
     def get_description(self):
         item_name = self.item.name if self.item else "None"
-        return f"\nLocation: {self.name} | Item: {item_name}\n"
+        enemy_name = self.enemy.name if self.enemy else "None"
+        return f"\nLocation: {self.name} | Item: {item_name} Enemy: {enemy_name}\n"
