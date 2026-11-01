@@ -1,57 +1,115 @@
-html{
+html {
     font-size: 16px;
 }
 
-body { 
-  font-family: Arial, sans-serif; line-height: 1.5;
-   color: #130909;
-    max-width: 2000px;
-     margin: 0 auto;
-     padding: 1rem; 
-    }
-
-header nav{ 
-  display: flex;
-  justify-content: space-between;
-}
-header img {
-  width: 100px;
-}
-nav ul { 
-display: 
-flex; list-style: 
-none; gap: 1.5rem; background-color: #181010; 
-padding: 0.75rem 1rem; 
-margin-bottom: 1.5rem; 
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    color: #130909;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 1rem;
+    background-color: rgb(202, 202, 199);
 }
 
-nav{
-text-decoration: none; 
-color: #333; 
-font-weight: bold; 
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+    align-items: center;            
+    width: 100%;
 }
-.products-row { 
-  display: flex; 
-  gap: 1.5rem; 
+
+nav img {
+    width: 100px;
+    height: auto;
 }
-.products-row > div { 
-  flex: 1; 
-  border: 1px solid #fffcfc; 
-  padding: 1rem; 
+div {
+    padding: 20px;
+    background-color: rgb(116, 115, 115);
 }
-.contacts-row { 
-  display: flex; 
-  gap: 2rem; 
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+    background-color: #181010;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
 }
-.contacts-row > div { 
-flex: 1; 
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
 }
-img { 
-  max-width: 100%; 
-  height: auto; 
-  display: block; 
+
+.products-row {
+    display: flex;
+    gap: 1.5rem;
 }
-p{
+
+.products-row>div {
+    flex: 1;
+    padding: 1rem;
+}
+
+.contacts-row {
+    display: flex;
+    gap: 2rem;
+}
+
+.contacts-row>div {
+    flex: 1;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+p {
     text-align: center;
     justify-content: center;
+}
+.navbar-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #fff;
+}
+.nav-links a {
+    text-decoration: none;
+    color: #130909;
+    font-weight: bold;
+}
+header {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+.Heading {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #130909;
+    margin-bottom: 1.5rem;
+    letter-spacing: 2px;
+}
+.products-intro h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: #130909;
+}
+.products-intro p {
+    font-size: 1.1rem;
+    color: #555;
+}
+.products-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3rem
+}
+.banner{
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
