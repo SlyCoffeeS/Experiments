@@ -3,7 +3,6 @@ html {
 }
 
 body {
-    font-family: Arial, sans-serif;
     line-height: 1.5;
     color: #130909;
     max-width: 1500px;
@@ -76,11 +75,11 @@ p {
   justify-content: space-between;
   align-items: center;
   padding: 15px 30px;
-  background-color: #fff;
+  background-color: #000000;
 }
 .nav-links a {
     text-decoration: none;
-    color: #130909;
+    color: #000000;
     font-weight: bold;
 }
 header {
@@ -90,7 +89,7 @@ header {
 .Heading {
     text-align: center;
     font-size: 2.5rem;
-    color: #130909;
+    color: #000000;
     margin-bottom: 1.5rem;
     letter-spacing: 2px;
 }
@@ -101,7 +100,7 @@ header {
 }
 .products-intro p {
     font-size: 1.1rem;
-    color: #555;
+    color: #0a0909;
 }
 .products-intro {
     text-align: center;
