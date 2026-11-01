@@ -6,13 +6,13 @@ body {
   margin: 0;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   text-align: center;
-  padding:0 3rem ;
+  padding:1rem ;
 }
 img{
-  max-width: 50%;
+  max-width: 80%;
 }
 header img {
-  width: 100px;
+  width: 150px;
 }
 header nav {
   display: flex;
@@ -23,5 +23,4 @@ div{
 }
 h1 {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  pad
 }
