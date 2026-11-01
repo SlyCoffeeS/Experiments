@@ -25,4 +25,9 @@ _This list is updated automatically by the Metropolia ICT extension._
 
 - 1. Company website: ✔ completed, 4/4 test points (`html-css/index.html`)
 
+### JS modules 1 and 2: Interactive programs and control structures (1 / 30 points)
+
+- 1. Print to the console: ✔ completed, 1/1 test points (`js-1-2/assignment-1/assignment-1.js`)
+- 2. Greeting: ✘ not completed yet, 0/2 test points (`js-1-2/assignment-2/assignment-2.js`)
+
 <!-- metropolia:progress:end -->
