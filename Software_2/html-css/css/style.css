@@ -1,26 +1,57 @@
 html{
-  font-size: 16px;
+    font-size: 16px;
 }
 
 body { 
-  margin: 0;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  text-align: center;
-  padding:1rem ;
-}
-img{
-  max-width: 80%;
-}
-header img {
-  width: 150px;
-}
-header nav {
+  font-family: Arial, sans-serif; line-height: 1.5;
+   color: #130909;
+    max-width: 2000px;
+     margin: 0 auto;
+     padding: 1rem; 
+    }
+
+header nav{ 
   display: flex;
   justify-content: space-between;
 }
-div{
-  align-items: right;
+header img {
+  width: 100px;
 }
-h1 {
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+nav ul { 
+display: 
+flex; list-style: 
+none; gap: 1.5rem; background-color: #181010; 
+padding: 0.75rem 1rem; 
+margin-bottom: 1.5rem; 
+}
+
+nav{
+text-decoration: none; 
+color: #333; 
+font-weight: bold; 
+}
+.products-row { 
+  display: flex; 
+  gap: 1.5rem; 
+}
+.products-row > div { 
+  flex: 1; 
+  border: 1px solid #fffcfc; 
+  padding: 1rem; 
+}
+.contacts-row { 
+  display: flex; 
+  gap: 2rem; 
+}
+.contacts-row > div { 
+flex: 1; 
+}
+img { 
+  max-width: 100%; 
+  height: auto; 
+  display: block; 
+}
+p{
+    text-align: center;
+    justify-content: center;
 }
