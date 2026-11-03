@@ -74,13 +74,8 @@ p {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-<<<<<<< HEAD
   padding: 18px 24px;
   background-color: #fff;
-=======
-  padding: 15px 30px;
-  background-color: #000000;
->>>>>>> 3e4416a7b06a30a2bf4e4f2e9652c9ff733c819e
 }
 .nav-links a {
     text-decoration: none;
@@ -105,11 +100,7 @@ header {
 }
 .products-intro p {
     font-size: 1.1rem;
-<<<<<<< HEAD
     color: #000000;
-=======
-    color: #0a0909;
->>>>>>> 3e4416a7b06a30a2bf4e4f2e9652c9ff733c819e
 }
 .products-intro {
     text-align: center;
