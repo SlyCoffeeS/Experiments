@@ -1,16 +1,15 @@
 html {
     font-size: 18px;
 }
-
 body {
+    font-family: Arial, sans-serif;
     line-height: 1.5;
     color: #000000;
     max-width: 1500px;
     margin: 0 auto;
     padding: 1rem;
-    background-color: rgba(251, 199, 199, 0.448);
+    background-color: #faf4f4;
 }
-
 nav {
     display: flex;
     flex-direction: row;
@@ -18,7 +17,6 @@ nav {
     align-items: center;            
     width: 100%;
 }
-
 nav img {
     width: 100px;
     height: auto;
@@ -35,36 +33,29 @@ nav ul {
     padding: 0.75rem 1.5rem;
     border-radius: 4px;
 }
-
 .nav-links {
     display: flex;
     gap: 1.5rem;
 }
-
 .products-row {
     display: flex;
     gap: 1.5rem;
 }
-
 .products-row>div {
     flex: 1;
     padding: 1rem;
 }
-
 .contacts-row {
     display: flex;
     gap: 2rem;
 }
-
 .contacts-row>div {
     flex: 1;
 }
-
 img {
     max-width: 100%;
     height: auto;
 }
-
 p {
     text-align: center;
     justify-content: center;
@@ -74,17 +65,12 @@ p {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-<<<<<<< HEAD
   padding: 18px 24px;
   background-color: #fff;
-=======
-  padding: 15px 30px;
-  background-color: #000000;
->>>>>>> 3e4416a7b06a30a2bf4e4f2e9652c9ff733c819e
 }
 .nav-links a {
     text-decoration: none;
-    color: #000000;
+    color: #130909;
     font-weight: bold;
 }
 header {
@@ -94,7 +80,7 @@ header {
 .Heading {
     text-align: center;
     font-size: 2.5rem;
-    color: #000000;
+    color: #130909;
     margin-bottom: 1.5rem;
     letter-spacing: 2px;
 }
@@ -105,11 +91,7 @@ header {
 }
 .products-intro p {
     font-size: 1.1rem;
-<<<<<<< HEAD
     color: #000000;
-=======
-    color: #0a0909;
->>>>>>> 3e4416a7b06a30a2bf4e4f2e9652c9ff733c819e
 }
 .products-intro {
     text-align: center;
