@@ -1,15 +1,15 @@
 html {
-    font-size: 16px;
+    font-size: 18px;
 }
 
 body {
     font-family: Arial, sans-serif;
     line-height: 1.5;
-    color: #130909;
+    color: #000000;
     max-width: 1500px;
     margin: 0 auto;
     padding: 1rem;
-    background-color: rgb(202, 202, 199);
+    background-color: rgba(251, 199, 199, 0.448);
 }
 
 nav {
@@ -26,7 +26,7 @@ nav img {
 }
 div {
     padding: 20px;
-    background-color: rgb(116, 115, 115);
+    background-color: rgb(213, 210, 210);
 }
 nav ul {
     display: flex;
@@ -75,7 +75,7 @@ p {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 30px;
+  padding: 18px 24px;
   background-color: #fff;
 }
 .nav-links a {
@@ -97,11 +97,11 @@ header {
 .products-intro h1 {
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
-    color: #130909;
+    color: #000000;
 }
 .products-intro p {
     font-size: 1.1rem;
-    color: #555;
+    color: #000000;
 }
 .products-intro {
     text-align: center;
