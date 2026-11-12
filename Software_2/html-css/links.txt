@@ -1,1 +1,3 @@
-https://github.com/username/webdev-assignments
+https://slycoffees.github.io/html-css/
+https://slycoffees.github.io/html-css/screenshots
+https://github.com/SlyCoffeeS/html-css
